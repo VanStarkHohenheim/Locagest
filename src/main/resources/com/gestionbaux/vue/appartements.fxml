@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<!-- Écran de la liste des appartements -->
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gestionbaux.controleur.AppartementsControleur"
+            style="-fx-padding: 20;">
+
+    <!-- En-tête avec bouton retour -->
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-padding: 0 0 15 0;">
+            <Button text="← Accueil" onAction="#retourAccueil"/>
+            <Label text="Liste des Appartements"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <!-- Tableau principal - les colonnes sont configurées dans le contrôleur -->
+    <center>
+        <TableView fx:id="tableAppartements">
+            <placeholder>
+                <Label text="Aucun appartements enregistré."/>
+            </placeholder>
+        </TableView>
+
+    </center>
+
+    <!-- Zone pour les boutons d'action futurs -->
+    <bottom>
+        <HBox spacing="10" style="-fx-padding: 15 0 0 0;">
+            <Button text="Ajouter" onAction="#ajouterAppartement"/>
+            <Button fx:id="btnSupprimer" text="Supprimer" onAction="#supprimerAppartement"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

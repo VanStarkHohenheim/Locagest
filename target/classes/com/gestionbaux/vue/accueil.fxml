@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Écran d'accueil : point de départ de la navigation -->
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.gestionbaux.controleur.AccueilControleur"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-padding: 60;">
+
+    <Label text="Gestion des Baux Locatifs"
+           style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+
+    <Label text="Choisissez une section :"
+           style="-fx-font-size: 14px;"/>
+
+    <!-- Chaque bouton appelle une méthode du contrôleur via onAction -->
+    <Button text="Appartements"
+            onAction="#allerAppartements"
+            prefWidth="200" prefHeight="45"/>
+
+    <Button text="Locataires"
+            onAction="#allerLocataires"
+            prefWidth="200" prefHeight="45"/>
+
+    <Button text="Baux"
+            onAction="#allerBaux"
+            prefWidth="200" prefHeight="45"/>
+
+</VBox>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Formulaire de création d'un bail — contrôleur séparé de BauxControleur -->
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.gestionbaux.controleur.FormBauxControleur"
+            prefHeight="450.0" prefWidth="500.0"
+            style="-fx-padding: 20;">
+
+    <top>
+        <Label text="Créer un bail"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 0 0 15 0;"/>
+    </top>
+
+    <center>
+        <VBox spacing="8">
+            <Label text="Nom du locataire"/>
+            <TextField fx:id="champNom" promptText="Ex: Dupont"/>
+
+            <Label text="Prénom du locataire"/>
+            <TextField fx:id="champPrenom" promptText="Ex: Jean"/>
+
+            <Label text="Adresse de l'appartement"/>
+            <TextField fx:id="champAdresse" promptText="Ex: 12 rue de la Paix, Paris"/>
+
+            <Label text="Date de début"/>
+            <DatePicker fx:id="champDateDebut"/>
+
+            <Label text="Date de fin"/>
+            <DatePicker fx:id="champDateFin"/>
+
+            <Label text="Loyer mensuel (€)"/>
+            <TextField fx:id="champLoyer" promptText="Ex: 850"/>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" style="-fx-padding: 15 0 0 0;">
+            <Button text="Enregistrer" onAction="#enregistrerBail"/>
+            <Button text="Annuler" onAction="#annuler"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.gestionbaux.controleur.FormAppartementControleur"
+            prefHeight="350.0" prefWidth="500.0"
+            style="-fx-padding: 20;">
+
+    <top>
+        <Label text="Ajouter un appartement"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 0 0 15 0;"/>
+    </top>
+
+    <center>
+        <VBox spacing="8">
+            <Label text="Adresse"/>
+            <TextField fx:id="champAdresse" promptText="Ex: 12 rue de la Paix, Paris"/>
+
+            <Label text="Surface (m²)"/>
+            <TextField fx:id="champSurface" promptText="Ex: 45"/>
+
+            <Label text="Nombre de pièces"/>
+            <TextField fx:id="champPieces" promptText="Ex: 3"/>
+
+            <Label text="Loyer mensuel (€)"/>
+            <TextField fx:id="champLoyer" promptText="Ex: 850"/>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" style="-fx-padding: 15 0 0 0;">
+            <Button text="Enregistrer" onAction="#enregistrerAppartement"/>
+            <Button text="Annuler" onAction="#annuler"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

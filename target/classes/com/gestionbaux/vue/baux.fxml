@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<!-- Écran de la liste des baux locatifs -->
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gestionbaux.controleur.BauxControleur"
+            style="-fx-padding: 20;">
+
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-padding: 0 0 15 0;">
+            <Button text="← Accueil" onAction="#retourAccueil"/>
+            <Label text="Liste des Baux"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tableBaux">
+            <placeholder>
+                <Label text="Aucun bails enregistré."/>
+            </placeholder>
+        </TableView>
+
+    </center>
+
+    <bottom>
+        <HBox spacing="10" style="-fx-padding: 15 0 0 0;">
+            <Button text="Créer un bail" onAction="#formubail"/>
+            <Button fx:id="btnSupprimer" text="Supprimer" onAction="#supprimerBail"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

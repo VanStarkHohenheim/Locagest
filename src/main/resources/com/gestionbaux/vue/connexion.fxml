@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.gestionbaux.controleur.ConnexionControleur"
+      alignment="CENTER" spacing="12"
+      style="-fx-padding: 60;">
+
+    <Label text="LocaGest" style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+    <Label text="Connexion" style="-fx-font-size: 14px;"/>
+
+    <TextField fx:id="champLogin" promptText="Identifiant" maxWidth="280"/>
+    <PasswordField fx:id="champMotDePasse" promptText="Mot de passe" maxWidth="280"/>
+
+    <Label fx:id="labelErreur" style="-fx-text-fill: red;"/>
+
+    <Button text="Se connecter" onAction="#seConnecter" prefWidth="280"/>
+
+</VBox>

@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<!-- Écran de la liste des baux locatifs -->
 <BorderPane xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.gestionbaux.controleur.BauxControleur"
             style="-fx-padding: 20;">
@@ -22,16 +21,15 @@
     <center>
         <TableView fx:id="tableBaux">
             <placeholder>
-                <Label text="Aucun bails enregistré."/>
+                <Label text="Aucun bail enregistré."/>
             </placeholder>
         </TableView>
-
     </center>
 
     <bottom>
         <HBox spacing="10" style="-fx-padding: 15 0 0 0;">
-            <Button text="Créer un bail" onAction="#formubail"/>
-            <Button fx:id="btnSupprimer" text="Supprimer" onAction="#supprimerBail"/>
+            <Button fx:id="btnAjouter"   text="Créer un bail" onAction="#formubail"/>
+            <Button fx:id="btnSupprimer" text="Supprimer"     onAction="#supprimerBail"/>
         </HBox>
     </bottom>
 

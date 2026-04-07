@@ -18,6 +18,12 @@
     </properties>
 
     <dependencies>
+        <!-- Driver SQLite -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.45.3.0</version>
+        </dependency>
         <!-- Composants graphiques JavaFX (Button, Label, TableView...) -->
         <dependency>
             <groupId>org.openjfx</groupId>

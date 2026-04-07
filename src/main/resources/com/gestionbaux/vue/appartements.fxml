@@ -33,7 +33,7 @@
     <!-- Zone pour les boutons d'action futurs -->
     <bottom>
         <HBox spacing="10" style="-fx-padding: 15 0 0 0;">
-            <Button text="Ajouter" onAction="#ajouterAppartement"/>
+            <Button fx:id="btnAjouter" text="Ajouter" onAction="#ajouterAppartement"/>
             <Button fx:id="btnSupprimer" text="Supprimer" onAction="#supprimerAppartement"/>
         </HBox>
     </bottom>

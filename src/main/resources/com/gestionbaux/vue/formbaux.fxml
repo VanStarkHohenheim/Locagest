@@ -3,11 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<!-- Formulaire de création d'un bail — contrôleur séparé de BauxControleur -->
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.gestionbaux.controleur.FormBauxControleur"
-            prefHeight="450.0" prefWidth="500.0"
+            prefHeight="400.0" prefWidth="500.0"
             style="-fx-padding: 20;">
 
     <top>
@@ -17,20 +16,17 @@
 
     <center>
         <VBox spacing="8">
-            <Label text="Nom du locataire"/>
-            <TextField fx:id="champNom" promptText="Ex: Dupont"/>
+            <Label text="Locataire"/>
+            <ComboBox fx:id="champLocataire" maxWidth="Infinity"/>
 
-            <Label text="Prénom du locataire"/>
-            <TextField fx:id="champPrenom" promptText="Ex: Jean"/>
-
-            <Label text="Adresse de l'appartement"/>
-            <TextField fx:id="champAdresse" promptText="Ex: 12 rue de la Paix, Paris"/>
+            <Label text="Appartement"/>
+            <ComboBox fx:id="champAppartement" maxWidth="Infinity"/>
 
             <Label text="Date de début"/>
-            <DatePicker fx:id="champDateDebut"/>
+            <DatePicker fx:id="champDateDebut" maxWidth="Infinity"/>
 
             <Label text="Date de fin"/>
-            <DatePicker fx:id="champDateFin"/>
+            <DatePicker fx:id="champDateFin" maxWidth="Infinity"/>
 
             <Label text="Loyer mensuel (€)"/>
             <TextField fx:id="champLoyer" promptText="Ex: 850"/>
@@ -40,7 +36,7 @@
     <bottom>
         <HBox spacing="10" style="-fx-padding: 15 0 0 0;">
             <Button text="Enregistrer" onAction="#enregistrerBail"/>
-            <Button text="Annuler" onAction="#annuler"/>
+            <Button text="Annuler"     onAction="#annuler"/>
         </HBox>
     </bottom>
 

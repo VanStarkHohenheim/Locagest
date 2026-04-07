@@ -4,8 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import com.gestionbaux.dao.AppartementDAO;
 import com.gestionbaux.modele.Appartement;
 import com.gestionbaux.util.NavigationUtil;
+import com.gestionbaux.util.SessionManager;
 
 public class FormAppartementControleur {
 
@@ -14,68 +16,28 @@ public class FormAppartementControleur {
     @FXML private TextField champPieces;
     @FXML private TextField champLoyer;
 
-    private static int compteurId = 1;
-
     @FXML
-    public void enregistrerAppartement(ActionEvent actionEvent) {
-        // Validation : vérifie que les champs ne sont pas vides et que les nombres sont valides
-        if (champAdresse.getText().isBlank()) {
-            afficherErreur("L'adresse est obligatoire.");
+    public void enregistrerAppartement(ActionEvent e) {
+        if (champAdresse.getText().isBlank() || champSurface.getText().isBlank()
+                || champPieces.getText().isBlank() || champLoyer.getText().isBlank()) {
+            new Alert(Alert.AlertType.WARNING, "Veuillez remplir tous les champs.").showAndWait();
             return;
         }
-        if (!estNombreEntier(champSurface.getText())) {
-            afficherErreur("La surface doit être un nombre entier.");
-            return;
+        try {
+            Appartement a = new Appartement(
+                0,
+                champAdresse.getText(),
+                Integer.parseInt(champSurface.getText().trim()),
+                Integer.parseInt(champPieces.getText().trim()),
+                Double.parseDouble(champLoyer.getText().trim())
+            );
+            AppartementDAO.ajouter(a, SessionManager.getUtilisateur().getId());
+            NavigationUtil.naviguerVers("appartements");
+        } catch (NumberFormatException ex) {
+            new Alert(Alert.AlertType.ERROR, "Surface, pièces et loyer doivent être des nombres.").showAndWait();
         }
-        if (!estNombreEntier(champPieces.getText())) {
-            afficherErreur("Le nombre de pièces doit être un nombre entier.");
-            return;
-        }
-        if (!estNombreDecimal(champLoyer.getText())) {
-            afficherErreur("Le loyer doit être un nombre valide.");
-            return;
-        }
-
-        Appartement appartement = new Appartement(
-            compteurId++,
-            champAdresse.getText(),
-            Integer.parseInt(champSurface.getText()),
-            Integer.parseInt(champPieces.getText()),
-            Double.parseDouble(champLoyer.getText())
-        );
-
-        AppartementsControleur.appartements.add(appartement);
-        NavigationUtil.naviguerVers("appartements");
     }
 
     @FXML
-    public void annuler(ActionEvent actionEvent) {
-        NavigationUtil.naviguerVers("appartements");
-    }
-
-    private boolean estNombreEntier(String valeur) {
-        try {
-            Integer.parseInt(valeur.trim());
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    private boolean estNombreDecimal(String valeur) {
-        try {
-            Double.parseDouble(valeur.trim());
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    private void afficherErreur(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erreur de saisie");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+    public void annuler(ActionEvent e) { NavigationUtil.naviguerVers("appartements"); }
 }

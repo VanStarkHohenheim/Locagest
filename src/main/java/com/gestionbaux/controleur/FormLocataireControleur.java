@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import com.gestionbaux.dao.LocataireDAO;
 import com.gestionbaux.modele.Locataire;
 import com.gestionbaux.util.NavigationUtil;
 
@@ -14,42 +15,17 @@ public class FormLocataireControleur {
     @FXML private TextField champEmail;
     @FXML private TextField champTelephone;
 
-    private static int compteurId = 1;
-
     @FXML
-    public void enregistrerLocataire(ActionEvent actionEvent) {
-        // Validation : nom et prénom obligatoires
-        if (champNom.getText().isBlank()) {
-            afficherErreur("Le nom est obligatoire.");
+    public void enregistrerLocataire(ActionEvent e) {
+        if (champNom.getText().isBlank() || champPrenom.getText().isBlank()
+                || champEmail.getText().isBlank() || champTelephone.getText().isBlank()) {
+            new Alert(Alert.AlertType.WARNING, "Veuillez remplir tous les champs.").showAndWait();
             return;
         }
-        if (champPrenom.getText().isBlank()) {
-            afficherErreur("Le prénom est obligatoire.");
-            return;
-        }
-
-        Locataire locataire = new Locataire(
-            compteurId++,
-            champNom.getText(),
-            champPrenom.getText(),
-            champEmail.getText(),
-            champTelephone.getText()
-        );
-
-        LocatairesControleur.locataires.add(locataire);
+        LocataireDAO.ajouter(new Locataire(0, champNom.getText(), champPrenom.getText(), champEmail.getText(), champTelephone.getText()));
         NavigationUtil.naviguerVers("locataires");
     }
 
     @FXML
-    public void annuler(ActionEvent actionEvent) {
-        NavigationUtil.naviguerVers("locataires");
-    }
-
-    private void afficherErreur(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erreur de saisie");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+    public void annuler(ActionEvent e) { NavigationUtil.naviguerVers("locataires"); }
 }

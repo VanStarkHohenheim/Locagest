@@ -3,31 +3,29 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
-<!-- Écran d'accueil : point de départ de la navigation -->
 <VBox xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.gestionbaux.controleur.AccueilControleur"
-      alignment="CENTER"
-      spacing="20"
+      alignment="CENTER" spacing="14"
       style="-fx-padding: 60;">
 
-    <Label text="LocaGest"
-           style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+    <Label text="LocaGest" style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
 
-    <Label text="Choisissez une section :"
-           style="-fx-font-size: 14px;"/>
+    <HBox alignment="CENTER" spacing="8">
+        <Label fx:id="labelUtilisateur" style="-fx-font-size: 12px; -fx-text-fill: #555;"/>
+        <Button text="Déconnexion" onAction="#seDeconnecter" style="-fx-font-size: 11px;"/>
+    </HBox>
 
-    <!-- Chaque bouton appelle une méthode du contrôleur via onAction -->
-    <Button text="Appartements"
-            onAction="#allerAppartements"
-            prefWidth="200" prefHeight="45"/>
+    <Label text="Choisissez une section :" style="-fx-font-size: 14px;"/>
 
-    <Button text="Locataires"
-            onAction="#allerLocataires"
-            prefWidth="200" prefHeight="45"/>
+    <Button fx:id="btnAppartements" text="Appartements"
+            onAction="#allerAppartements" prefWidth="200" prefHeight="45"/>
 
-    <Button text="Baux"
-            onAction="#allerBaux"
-            prefWidth="200" prefHeight="45"/>
+    <Button fx:id="btnLocataires" text="Locataires"
+            onAction="#allerLocataires" prefWidth="200" prefHeight="45"/>
+
+    <Button fx:id="btnBaux" text="Baux"
+            onAction="#allerBaux" prefWidth="200" prefHeight="45"/>
 
 </VBox>

@@ -27,4 +27,28 @@ public class UtilisateurDAO {
         }
         return null;
     }
+
+    public static boolean loginExiste(String login) {
+        String sql = "SELECT COUNT(*) FROM utilisateurs WHERE login = ?";
+        try (PreparedStatement stmt = DatabaseManager.getConnection().prepareStatement(sql)) {
+            stmt.setString(1, login);
+            ResultSet rs = stmt.executeQuery();
+            return rs.getInt(1) > 0;
+        } catch (SQLException e) {
+            System.err.println("Erreur vérification login : " + e.getMessage());
+        }
+        return false;
+    }
+
+    public static void ajouter(String login, String motDePasse, Role role) {
+        String sql = "INSERT INTO utilisateurs (login, mot_de_passe, role) VALUES (?, ?, ?)";
+        try (PreparedStatement stmt = DatabaseManager.getConnection().prepareStatement(sql)) {
+            stmt.setString(1, login);
+            stmt.setString(2, motDePasse);
+            stmt.setString(3, role.name());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Erreur création compte : " + e.getMessage());
+        }
+    }
 }

@@ -5,20 +5,23 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.gestionbaux.controleur.ConnexionControleur"
+      fx:controller="com.gestionbaux.controleur.InscriptionControleur"
       alignment="CENTER" spacing="12"
       style="-fx-padding: 60;">
 
     <Label text="LocaGest" style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
-    <Label text="Connexion" style="-fx-font-size: 14px;"/>
+    <Label text="Créer un compte" style="-fx-font-size: 14px;"/>
 
     <TextField fx:id="champLogin" promptText="Identifiant" maxWidth="280"/>
     <PasswordField fx:id="champMotDePasse" promptText="Mot de passe" maxWidth="280"/>
+    <PasswordField fx:id="champConfirmation" promptText="Confirmer le mot de passe" maxWidth="280"/>
+
+    <ComboBox fx:id="champRole" promptText="Rôle" maxWidth="280"/>
 
     <Label fx:id="labelErreur" style="-fx-text-fill: red;"/>
 
-    <Button text="Se connecter" onAction="#seConnecter" prefWidth="280"/>
-    <Button text="Créer un compte" onAction="#allerInscription"
+    <Button text="S'inscrire" onAction="#sInscrire" prefWidth="280"/>
+    <Button text="Retour" onAction="#retourConnexion"
             prefWidth="280" style="-fx-background-color: transparent; -fx-underline: true;"/>
 
 </VBox>

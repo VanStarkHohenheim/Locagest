@@ -31,4 +31,9 @@ public class ConnexionControleur {
         SessionManager.connecter(u);
         NavigationUtil.naviguerVers("accueil");
     }
+
+    @FXML
+    private void allerInscription() {
+        NavigationUtil.naviguerVers("inscription");
+    }
 }
